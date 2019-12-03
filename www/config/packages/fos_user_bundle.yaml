@@ -1,0 +1,10 @@
+fos_user:
+  db_driver: mongodb
+  firewall_name: main
+  user_class: App\Document\User
+  from_email:
+    address: "admin@admin.ru"
+    sender_name: "Admin Admin"
+  registration:
+    form:
+      type: App\Form\RegistrationType

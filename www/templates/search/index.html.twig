@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Товар</th>
+            <th scope="col">Артикл</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.article }}</td>
+            <td>{{ product.vendor }}</td>
+            <td>{{ product.count }}</td>
+            <td>
+                {{ product.price }}
+                <form action="/cart/add" method="post">
+                    <input type="hidden" name="product" value="{{ product.id }}">
+                    <input type="number" name="quantity" value="0">
+                    <button type="submit" name="submit" value="yes">В корзину</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Supplier list{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Supplier list✅</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Поставщик</th>
+            <th scope="col">Email</th>
+            <th scope="col">Email для прайсов</th>
+            <th scope="col">Тема письма</th>
+            <th scope="col">Статус загрузки</th>
+            <th scope="col">Искать по xls</th>
+            <th scope="col">Наценка</th>
+            <th scope="col">Время доставки</th>
+            <th scope="col">Файл</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+                <tr>
+                    <td>{{ supplier.name }}</td>
+                    <td>{{ supplier.email }}</td>
+                    <td>{{ supplier.emailForPrice }}</td>
+                    <td>{{ supplier.emailTheme }}</td>
+                    <td>{{ supplier.status }}</td>
+                    <td>{{ supplier.searchFromXls }}</td>
+                    <td>{{ supplier.markup }}</td>
+                    <td>{{ supplier.deliveryTime }}</td>
+                    <td>{{ supplier.file }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

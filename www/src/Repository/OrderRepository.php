@@ -20,25 +20,11 @@ class OrderRepository extends DocumentRepository
     }
 
     /**
-     * @param array $orders
-     * @return Order[]
-     */
-    public function saveArray(array $orders) : array
-    {
-        foreach ($orders as $order){
-            $this->dm->persist($order);
-        }
-        $this->dm->flush();
-
-        return $orders;
-    }
-
-    /**
      * @param array $criteria
      * @param array|null $sort
      * @param int $limit
      * @param null $skip
-     * @return Order[]
+     * @return OrderItem[]
      */
     public function list(array $criteria = [], array $sort=null, $limit=10, $skip=null) : array
     {
@@ -49,9 +35,9 @@ class OrderRepository extends DocumentRepository
 
     /**
      * @param int $id
-     * @return Order
+     * @return OrderItem
      */
-    public function one(int $id) : Order
+    public function one(int $id) : OrderItem
     {
         $order = parent::findOneBy(['id'=>$id]);
 
@@ -70,7 +56,7 @@ class OrderRepository extends DocumentRepository
     public function delete(Order $order) : bool
     {
         $this->dm->remove($order);
-
+        $this->dm->flush();
         return true;
     }
 

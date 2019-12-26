@@ -118,6 +118,19 @@
       <path value="$PROJECT_DIR$/www/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/www/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/www/vendor/gesdinet/jwt-refresh-token-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-menu" />
+      <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-menu-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/cocur/slugify" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/admin-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/block-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/datagrid-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/cache" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/core-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/exporter" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/security-acl" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/doctrine-mongodb-admin-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

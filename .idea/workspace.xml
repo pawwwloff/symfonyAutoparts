@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6dc63314-e14e-4e4a-8354-42e6b9dcf56f" name="Default Changelist" comment="" />
+    <list default="true" id="6dc63314-e14e-4e4a-8354-42e6b9dcf56f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/www/src/Controller/OrderItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/autoparts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/autoparts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/www/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/gesdinet_jwt_refresh_token.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/gesdinet_jwt_refresh_token.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Controller/API/OrderController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Controller/API/OrderItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Document/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Document/OrderItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Repository/OrderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Repository/OrderItemRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Service/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/OrderItemService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Service/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/ProductService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/www/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/templates/search/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/www/templates/search/index.html.twig" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +42,9 @@
         <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -139,10 +164,24 @@
       <path value="$PROJECT_DIR$/www/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/www/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/www/vendor/gesdinet/jwt-refresh-token-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-menu" />
+      <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-menu-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/cocur/slugify" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/admin-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/block-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/datagrid-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/cache" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/core-bundle" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/exporter" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/security-acl" />
+      <path value="$PROJECT_DIR$/www/vendor/sonata-project/doctrine-mongodb-admin-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1PS832BhP8Vtk1vZcyFiAWNAPjK" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -150,23 +189,23 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/www/src/Controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/www/templates/order" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/www/src/Controller" />
-      <recent name="$PROJECT_DIR$/www/templates/admin/supplier" />
-      <recent name="$PROJECT_DIR$/www/templates/admin" />
-      <recent name="$PROJECT_DIR$/www/src/Controller/admin" />
-      <recent name="$PROJECT_DIR$/www/src/Service" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/www/config/packages" />
       <recent name="$PROJECT_DIR$/www/src/Controller/API" />
+      <recent name="$PROJECT_DIR$/www/config/packages" />
       <recent name="$PROJECT_DIR$/www/templates" />
       <recent name="$PROJECT_DIR$/www/templates/main/bundles/FOSUserBundle" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/www/templates/order" />
+      <recent name="$PROJECT_DIR$/www/src/Controller" />
+      <recent name="$PROJECT_DIR$/www/src/Service" />
+      <recent name="$PROJECT_DIR$/www/src/Repository" />
+      <recent name="$PROJECT_DIR$/www/src/Document" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -218,10 +257,25 @@
       <workItem from="1570681236835" duration="6857000" />
       <workItem from="1573541441632" duration="631000" />
       <workItem from="1573632645244" duration="1589000" />
+      <workItem from="1577256616203" duration="7424000" />
+      <workItem from="1577271011806" duration="8710000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

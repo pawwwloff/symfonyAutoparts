@@ -28,24 +28,21 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/cart/add", methods={"POST", "GET"})
+     * @Route("/order/make", methods={"POST", "GET"})
      * @param Request $request
      * @return JsonResponse
      */
-    public function add(Request $request) : JsonResponse
+    public function make(Request $request) : JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-
+        $data = $request->request->all();
         $user = $this->getUser();
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
-        if($sessionId) {
-            $order = $this->orderService->addInCart(
-                $data['id'],
-                $data['quantity'],
-                $user,
-                $sessionId
+
+        if($user) {
+            $order = $this->orderService->add(
+                $data['fio'],
+                $data['email'],
+                $data['phone'],
+                $user
             );
         }
 
@@ -53,21 +50,16 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/cart", methods={"GET"})
+     * @Route("/order", methods={"GET"})
      * @return JsonResponse
      */
     public function list(Request $request) : JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         $user = $this->getUser();
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
         $orders = null;
         if($user){
-            $orders = $this->orderService->getForUser($user);
-        }elseif ($sessionId){
-            $orders = $this->orderService->getForSession($sessionId);
+            $orders = $this->orderItemService->getForUser($user);
         }
 
         return $this->json($orders);

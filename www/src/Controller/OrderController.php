@@ -8,6 +8,7 @@ use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends Controller
@@ -28,28 +29,15 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/cart/add", methods={"POST", "GET"})
+     * @Route("/order/make", methods={"GET"})
      * @param Request $request
-     * @return JsonResponse
+     * @return Response
      */
-    public function add(Request $request) : JsonResponse
-    {
-        $data = $request->request->all();
+    public function makeForm(Request $request){
         $user = $this->getUser();
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
-
-        if($sessionId) {
-            $order = $this->orderService->addInCart(
-                $data['product'],
-                $data['quantity'],
-                $user,
-                $sessionId
-            );
-        }
-
-        return $this->json($order);
+        return $this->render('order/make.html.twig', [
+            'user'=>$user
+        ]);
     }
 
     /**
@@ -60,14 +48,9 @@ class OrderController extends Controller
     {
         $data = json_decode($request->getContent(), true);
         $user = $this->getUser();
-        $session = $request->getSession();
-        $session->start();
-        $sessionId = $session->getId();
         $orders = null;
         if($user){
-            $orders = $this->orderService->getForUser($user);
-        }elseif ($sessionId){
-            $orders = $this->orderService->getForSession($sessionId);
+            $orders = $this->orderItemService->getForUser($user);
         }
 
         return $this->json($orders);

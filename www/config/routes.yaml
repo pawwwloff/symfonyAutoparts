@@ -31,6 +31,15 @@ fos_user_security_check:
 api_login_check:
   path: /api/login_check
 
-gesdinet_jwt_refresh_token:
-  path:       /api/token/refresh
-  controller: gesdinet.jwtrefreshtoken::refresh
+admin_area:
+  resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+  prefix: /admin
+
+_sonata_admin:
+  resource: .
+  type: sonata_admin
+  prefix: /admin
+
+#gesdinet_jwt_refresh_token:
+#  path:       /api/token/refresh
+#  controller: gesdinet.jwtrefreshtoken::refresh

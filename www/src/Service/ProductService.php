@@ -67,7 +67,8 @@ class ProductService
     }
 
     public function updateCount(Product $product, $count){
-        $product->setCount($count);
-        return $this->productRepository->save($product);
+        //$product->setCount($count);
+        //return $this->productRepository->save($product);
+        return $product;
     }
 }

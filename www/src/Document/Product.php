@@ -47,6 +47,8 @@ class Product
      */
     protected $count;
 
+    protected $quantity;
+
 
     /**
      * Product constructor.
@@ -167,6 +169,22 @@ class Product
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity): void
+    {
+        $this->quantity = $quantity;
     }
 
 

@@ -1,0 +1,22 @@
+{% if lines %}
+<table class="table">
+    <thead>
+        <tr>
+            {% for i in range(0, lines.row) %}
+                <th scope="col">
+                    {% include "CRUD/supplier/download_file_select.html.twig" with {'name': i} %}
+                </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for line in lines.lines %}
+        <tr>
+            {% for i in range(0, lines.row) %}
+                <td>{{ line[i] }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}

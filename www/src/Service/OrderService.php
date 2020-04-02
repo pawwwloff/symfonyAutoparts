@@ -4,9 +4,11 @@
 namespace App\Service;
 
 
+use App\Document\Order;
 use App\Document\OrderItem;
 use App\Document\Product;
 use App\Document\User;
+use App\Repository\OrderItemRepository;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
 use App\Repository\SupplierRepository;
@@ -26,6 +28,11 @@ class OrderService
      * @var SupplierRepository
      */
     private $supplierRepository;
+    /**
+     * @var OrderItemRepository
+     */
+    private $orderItemRepository;
+
 
     /**
      * ProductService constructor.
@@ -33,33 +40,43 @@ class OrderService
      * @param ProductService $productService
      * @param SupplierRepository $supplierRepository
      */
-    public function __construct(OrderRepository $orderRepository, OrderItemService $orderItemService, SupplierRepository $supplierRepository)
+    public function __construct(OrderRepository $orderRepository, OrderItemService $orderItemService,
+                                SupplierRepository $supplierRepository, OrderItemRepository $orderItemRepository)
     {
         $this->orderItemService = $orderItemService;
         $this->supplierRepository = $supplierRepository;
         $this->orderRepository = $orderRepository;
+        $this->orderItemRepository = $orderItemRepository;
     }
 
     public function add($fio, $email, $phone, $user)
     {
-        $order = new Order();
-        $order->setFio($fio);
-        $order->setEmail($email);
-        $order->setPhone($phone);
-        $order->setUser($user);
         $basket = $this->orderItemService->getForUser($user);
-        dd($basket);
+        if($basket) {
+            $order = new Order();
+            $order->setFio($fio);
+            $order->setEmail($email);
+            $order->setPhone($phone);
+            $order->setUser($user);
+            if($this->orderRepository->save($order)){
+                foreach($basket as $number => $item){
+                    if($item->getProduct()->getCount()>0){
+                        $item->setOrder($order);
+                        $item->setStatus(OrderItem::WAITING_FOR_PAYMENT);
+                        $item->setNumber($number+1);
+                        $this->orderItemRepository->save($item);
+                    }
+                }
+            }
+        }
+        return $order;
         /*
-         foreach($basket as $item){
-         if($item->product->count>0){
 
-        }
-        }
          * */
         //$order->setBaseSumm($baseSumm);
         //$order->setSumm($summ);
         //$product = $this->productService->updateCount($product, $product->getCount()-$quantity);
-        return $this->orderRepository->save($order);
+        //return ;
     }
 
     /*public function update(OrderItem $order, Product $product, $quantity){

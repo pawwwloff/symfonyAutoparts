@@ -1,0 +1,6 @@
+<select name="jsonSettings[{{name}}]">
+        <option value="-">-</option>
+    {% for key,value in select %}
+        <option value="{{ key }}" {% if settings and key == settings[ name ] %}selected="selected"{% endif %}>{{ value }}</option>
+    {% endfor %}
+</select>

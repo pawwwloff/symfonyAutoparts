@@ -1,0 +1,13 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div data-action="{{ admin.generateObjectUrl('change_supplier', object) }}">
+
+        <select name="changeSupplier">
+            {% for supplier in field_description.options.suppliers %}
+                <option value="{{ supplier.id }}" {% if supplier.id == object.getSupplier().id %}selected="selected"{% endif %}>{{ supplier.name }}</option>
+            {% endfor %}
+        </select>
+        <!--<strong>{{ object.name }}</strong> <br />-->
+    </div>
+{% endblock %}

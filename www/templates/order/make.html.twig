@@ -3,5 +3,7 @@
 {% block title %}Оформление заказа{% endblock %}
 
 {% block body %}
-    тут форма
+    <div id="order_content">
+        {% include '/order/_make_content.html.twig' %}
+    </div>
 {% endblock %}

@@ -1,0 +1,5 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'action':  path("app_order_make") }}) }}
+{{ form_widget(form) }}
+{% include '/order/_cart_content.html.twig' %}
+<button type="submit" class="button">Отправить</button>
+{{ form_end(form) }}

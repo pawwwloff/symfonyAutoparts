@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ваши заказы{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Товар</th>
+            <th scope="col">Артикл</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Сумма</th>
+            <th scope="col">Оплачено</th>
+            <th scope="col">Оплатить</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.name }}</td>
+            <td>{{ order.article }}</td>
+            <td>{{ order.vendor }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.summ }}</td>
+            <td class="paidText">{{ order.paidText }}</td>
+            <td>
+                {% if order.paid == 0 %}
+                <button data-id="{{ order.id }}" name="pay">Оплатить</button>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

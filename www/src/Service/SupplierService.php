@@ -60,4 +60,9 @@ class SupplierService
     {
         return $this->repository->list();
     }
+
+    public function getById($id) : Supplier
+    {
+        return $this->repository->one($id);
+    }
 }

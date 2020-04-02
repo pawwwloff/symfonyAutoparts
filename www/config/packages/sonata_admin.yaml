@@ -3,6 +3,11 @@ sonata_admin:
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
+    assets:
+        # javascript paths to add to the page in addition to the list above
+        extra_javascripts:
+            - assets/js/script.admin.js
+
 
 sonata_block:
     blocks:

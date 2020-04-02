@@ -4,6 +4,8 @@
 namespace App\Controller\API;
 
 
+use App\Document\Order;
+use App\Form\OrderMakeType;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,15 +38,23 @@ class OrderController extends Controller
     {
         $data = $request->request->all();
         $user = $this->getUser();
-
-        if($user) {
+        $order = new Order();
+        $form = $this->createForm(OrderMakeType::class, $order);
+        $form->handleRequest($request);
+        if($request->getMethod()=='POST'){
+            if (!$form->isValid()) {
+                dd($form->getErrors(true, false));
+            }
+        }
+        $order = [];
+        /*if($user) {
             $order = $this->orderService->add(
                 $data['fio'],
                 $data['email'],
                 $data['phone'],
                 $user
             );
-        }
+        }*/
 
         return $this->json($order);
     }

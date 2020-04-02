@@ -3,10 +3,15 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
         App\Document\User: bcrypt
 
+    #acl:
+    #    connection: default
+
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
         ROLE_API:         ROLE_USER
+        SONATA:
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -50,6 +55,21 @@ security:
         #        authenticators:
         #            - lexik_jwt_authentication.jwt_token_authenticator
         #    provider: jwt
+        admin:
+            pattern:            /admin(.*)
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+            logout:
+                path:           /admin/logout
+                target:         /admin/login
+            anonymous:          true
+
         main:
             pattern: ^/
             user_checker: security.user_checker
@@ -68,6 +88,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # Admin login page needs to be accessed without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -75,6 +101,8 @@ security:
         #- { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/api/cart, roles: ROLE_USER }
-        - { path: ^/cart, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cart, roles: ROLE_USER }
+        - { path: ^/order, roles: ROLE_USER }
+        - { path: ^/search, roles: ROLE_USER }
         - { path: ^/api,       roles: [ROLE_API,ROLE_USER]}
         #- { path: ^/api/, role: IS_AUTHENTICATED_FULLY}

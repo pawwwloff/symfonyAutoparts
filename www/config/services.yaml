@@ -28,11 +28,24 @@ services:
 
     admin.supplier:
         class: App\Admin\SupplierAdmin
-        arguments: [~, App\Document\Supplier, ~]
+        arguments: [~, App\Document\Supplier, App\Controller\Admin\SupplierAdminController]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, label: Supplier }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Supplier }
     admin.product:
         class: App\Admin\ProductAdmin
         arguments: [~, App\Document\Product, ~]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, label: Product }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Product }
+    admin.order:
+        class: App\Admin\OrderItemAdmin
+        arguments: [~, App\Document\OrderItem, App\Controller\Admin\OrderItemAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Order }
+    admin.account:
+        class: App\Admin\PersonalAccountAdmin
+        arguments: [~, App\Document\PersonalAccount, ~]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: sonata_user, label: PersonalAccount }
+    mailer:
+      alias: fos_user.mailer.noop
+      public: true

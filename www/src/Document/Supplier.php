@@ -28,37 +28,9 @@ class Supplier
     /**
      * @MongoDB\Field(type="string")
      */
-    protected $emailForPrice;
-
-    /**
-     * @MongoDB\Field(type="string")
-     */
-    protected $emailTheme;
-
-    /**
-     * @MongoDB\Field(type="string")
-     */
     protected $status;
 
-    /**
-     * @MongoDB\Field(type="boolean")
-     */
-    protected $searchFromXls;
 
-    /**
-     * @MongoDB\Field(type="int")
-     */
-    protected $markup;
-
-    /**
-     * @MongoDB\Field(type="int")
-     */
-    protected $deliveryTime;
-
-    /**
-     * @MongoDB\Field(type="string")
-     */
-    protected $file;
 
     /**
      * Supplier constructor.
@@ -106,37 +78,6 @@ class Supplier
         $this->email = $email;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEmailForPrice()
-    {
-        return $this->emailForPrice;
-    }
-
-    /**
-     * @param mixed $emailForPrice
-     */
-    public function setEmailForPrice($emailForPrice): void
-    {
-        $this->emailForPrice = $emailForPrice;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmailTheme()
-    {
-        return $this->emailTheme;
-    }
-
-    /**
-     * @param mixed $emailTheme
-     */
-    public function setEmailTheme($emailTheme): void
-    {
-        $this->emailTheme = $emailTheme;
-    }
 
     /**
      * @return mixed
@@ -153,70 +94,4 @@ class Supplier
     {
         $this->status = $status;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getSearchFromXls()
-    {
-        return $this->searchFromXls;
-    }
-
-    /**
-     * @param mixed $searchFromXls
-     */
-    public function setSearchFromXls($searchFromXls): void
-    {
-        $this->searchFromXls = $searchFromXls;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMarkup()
-    {
-        return $this->markup;
-    }
-
-    /**
-     * @param mixed $markup
-     */
-    public function setMarkup($markup): void
-    {
-        $this->markup = $markup;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeliveryTime()
-    {
-        return $this->deliveryTime;
-    }
-
-    /**
-     * @param mixed $deliveryTime
-     */
-    public function setDeliveryTime($deliveryTime): void
-    {
-        $this->deliveryTime = $deliveryTime;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param mixed $file
-     */
-    public function setFile($file): void
-    {
-        $this->file = $file;
-    }
-
-
 }

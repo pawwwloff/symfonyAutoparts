@@ -137,7 +137,7 @@
                                     <path d="M0 0h24v24H0z" fill="none"/>
                                 </svg>
                                 <span>
-                                 Баланс <span id='curBudgetAsside' class='black'>0 руб.</span>
+                                    Баланс <span id='curBudgetAsside' class='black'><span>{{app.user.personalAccount.finance}}</span> руб.</span>
                                 </span>
                             </a>
                         </li>
@@ -149,7 +149,7 @@
                                     <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                                 </svg>
                                 <span>
-                                    Овердрафт <span class="black">0 руб.</span>
+                                    Овердрафт <span id='curOverdraft' class="black"><span>{{app.user.personalAccount.overdraft}}</span> руб.</span>
                                 </span>
                             </span>
                         </li>
@@ -198,30 +198,8 @@
                         {% endif %}
 
                     </ul>
-                    <ul class="side-nav__menu">
-                        <li>
-                            <a href="/cart/" class="nav-panel-link__svg">
-                                <svg class="nav-panel-link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
-                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                </svg>
-                                Корзина
-                                <div class="info-massages">2</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/cart/delayed/" class="nav-panel-link__svg">
-                                <svg class="nav-panel-link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"></path></svg>
-                                Отложенное
-                                <div class="info-massages-del">0</div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="nav-panel-text">
-                                Сумма заказа:<span class="side-nav__summ">7 695,91 ₽</span>
-                            </div>
-                        </li>
-                    </ul>
+
+                    {{ render(controller('App\\Controller\\MainController::cart')) }}
                     <ul class="side-nav__menu">
                         <li>
                             <a href="/sborka/" class="nav-panel-link__svg">
@@ -296,7 +274,72 @@
         <strong style="padding-top: 1px">Leeman Car 2019 ©</strong>
         <img class="ml-2"style="max-height: 14px" src="/assets/img/payments.png">
     </footer>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script>
+                /*$(document).ready(function() {
+                    // bind 'myForm' and provide a simple callback function
+                    $('#order_content form').ajaxForm(function() {
+                        alert("Thank you for your comment!");
+                    });
+                });*/
+                $(document).on('submit', '#order_content form',function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var data = form.serializeArray();
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: data
+                    }).done(function (data) {
+                        $('#order_content').html(data.content);
+                    });
+                });
+                $(document).on('submit', '[action="/cart/add"]',function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var data = form.serializeArray();
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: data
+                    }).done(function (data) {
+                        $('.side-nav__summ span').html(data.summ);
+                    });
+                });
+                $(document).on('change', '[name="quantity"]',function (e) {
+                    e.preventDefault();
+                    var product = $(this).parent().find('[name="product"]').val();
+                    var quantity = $(this).val();
+                    var data = {product:product, quantity:quantity};
+                    $.ajax({
+                        type: 'POST',
+                        url: '/cart/add',
+                        data: data
+                    }).done(function (data) {
+                        $('.side-nav__summ span').html(data.summ);
+                    });
+                });
+                $(document).on('click', '[name="pay"]',function (e) {
+                    e.preventDefault();
+                    var $this = $(this);
+                    var parent = $this.closest('tr');
+                    var id = $this.data('id');
+                    var data = {id:id};
+                    $.ajax({
+                        type: 'POST',
+                        url: '/personal/pay',
+                        data: data
+                    }).done(function (data) {
+                        parent.find('.paidText').html(data.order.paidText);
+                        $this.remove();
+                        $('#curBudgetAsside span').html(data.account.finance);
+                        $('#curOverdraft span').html(data.account.overdraft);
+                        console.log(data);
+                    });
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>

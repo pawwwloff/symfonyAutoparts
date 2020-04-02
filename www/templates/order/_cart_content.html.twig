@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Товар</th>
+        <th scope="col">Артикл</th>
+        <th scope="col">Производитель</th>
+        <th scope="col">Цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.article }}</td>
+            <td>{{ product.vendor }}</td>
+            <td>
+                {{ product.price }}
+                <div>
+                    <input type="hidden" name="product" value="{{ product.product.id }}">
+                    <input type="number" name="quantity" value="{{ product.quantity }}">
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

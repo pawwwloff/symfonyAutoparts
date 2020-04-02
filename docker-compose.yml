@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: nginx/nginx.Dockerfile
     volumes:
-      - ./www:/var/www/html
+      - ./www:/var/www/html:cached
       - ./nginx/log:/var/log/nginx
     ports:
       - 80:80
@@ -14,6 +14,7 @@ services:
       - fpm
       - mongo
       - mongo-express
+      - beanstalkd
     depends_on:
       - fpm
     container_name: 'autoparts_nginx'
@@ -35,6 +36,7 @@ services:
       #- ./cron/docker.sock:/var/run/docker.sock
     links:
       - mongo
+      - beanstalkd
     depends_on:
       - mongo
     container_name: 'autoparts_fpm'
@@ -57,3 +59,26 @@ services:
     container_name: 'autoparts_express'
     depends_on:
       - mongo
+  #rabbitmq:
+  #  image: 'rabbitmq:3.6-management-alpine'
+  #  ports:
+  #    - '5672:5672'
+  #    - '15672:15672'
+  #  volumes:
+  #    - ./rabbit:/var/lib/rabbitmq
+  beanstalkd:
+    image: schickling/beanstalkd:latest
+    restart: always
+    ports:
+      - "11300:11300"
+  beanstalkd_console:
+    ## Optionally; you can use a ready image changing:
+    ## * `build: .`
+    ## into:
+    image: agaveapi/beanstalkd-console
+    ports:
+      - 11380:80
+    environment:
+      - BEANSTALKD_HOST=beanstalkd
+    links:
+      - beanstalkd

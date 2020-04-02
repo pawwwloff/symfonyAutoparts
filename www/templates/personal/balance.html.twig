@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ваши заказы{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Кем изменено</th>
+            <th scope="col">Овердрафт перед изменением</th>
+            <th scope="col">Баланс перед изменением</th>
+            <th scope="col">Доступно средств перед изменением</th>
+            <th scope="col">Овердрафт после изменения</th>
+            <th scope="col">Баланс после изменения</th>
+            <th scope="col">Доступно средств после изменения</th>
+            <th scope="col">Дата обновления</th>
+            <th scope="col">Операция</th>
+            <th scope="col">Заказ</th>
+            <th scope="col">Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for log in pagination %}
+        <tr>
+            <td>{{ log.user.emailCanonical }}</td>
+            <td>{{ log.overdraft }}</td>
+            <td>{{ log.finance }}</td>
+            <td>{{ log.available }}</td>
+            <td>{{ log.newOverdraft }}</td>
+            <td>{{ log.newFinance }}</td>
+            <td>{{ log.newAvailable }}</td>
+            <td>{{ log.updateDate|date('Y-m-d H:i:s') }}</td>
+            <td>{{ log.operation }}</td>
+            <td>{{ log.orderNumber }}</td>
+            <td>{{ log.description}}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

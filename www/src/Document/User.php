@@ -2,7 +2,9 @@
 namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
-use FOS\UserBundle\Model\User as BaseUser;
+//use FOS\UserBundle\Model\User as BaseUser;
+use Sonata\UserBundle\Document\BaseUser as BaseUser;
+//use App\Application\Sonata\UserBundle\Document\User as BaseUser;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;
 
 /**
@@ -40,6 +42,8 @@ class User extends BaseUser implements JWTUserInterface
      */
     protected $password;
 
+    protected $confirmPassword;
+
     /**
      * @MongoDB\Field(type="date")
      */
@@ -49,6 +53,16 @@ class User extends BaseUser implements JWTUserInterface
      * @MongoDB\Field(type="collection")
      */
     protected $roles;
+
+    /**
+     * @MongoDB\ReferenceMany(targetDocument="App\Application\Sonata\UserBundle\Document\Group")
+     */
+    protected $groups;
+
+    /**
+     * @MongoDB\ReferenceOne(targetDocument="App\Document\PersonalAccount")
+     */
+    protected $personalAccount;
 
     /**
      * @return mixed
@@ -183,5 +197,37 @@ class User extends BaseUser implements JWTUserInterface
             $payload['roles'], // Added by default
             $payload['email']  // Custom
         );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+     * @param mixed $confirmPassword
+     */
+    public function setConfirmPassword($confirmPassword): void
+    {
+        $this->confirmPassword = $confirmPassword;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPersonalAccount()
+    {
+        return $this->personalAccount;
+    }
+
+    /**
+     * @param mixed $personalAccount
+     */
+    public function setPersonalAccount($personalAccount): void
+    {
+        $this->personalAccount = $personalAccount;
     }
 }

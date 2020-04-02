@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block body %}
+    {% include '/order/_cart_content.html.twig' %}
+    <a href="{{ path('app_order_order') }}">Заказать</a>
+{% endblock %}

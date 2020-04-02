@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div data-action="{{ admin.generateObjectUrl('change_quantity', object) }}">
+        <input name="value" value="{{ value }}">
+        <button name="changeQuantity">Изменить</button>
+    </div>
+{% endblock %}

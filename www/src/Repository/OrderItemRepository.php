@@ -48,10 +48,10 @@ class OrderItemRepository extends DocumentRepository
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      * @return OrderItem
      */
-    public function one(int $id) : OrderItem
+    public function one($id) : OrderItem
     {
         $orderItem = parent::findOneBy(['id'=>$id]);
 

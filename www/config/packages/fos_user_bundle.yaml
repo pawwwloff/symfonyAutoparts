@@ -2,9 +2,16 @@ fos_user:
   db_driver: mongodb
   firewall_name: main
   user_class: App\Document\User
+  #user_class: App\Application\Sonata\UserBundle\Document\User
   from_email:
     address: "admin@admin.ru"
     sender_name: "Admin Admin"
   registration:
     form:
       type: App\Form\RegistrationType
+  group:
+    group_class:   App\Application\Sonata\UserBundle\Document\Group
+    group_manager: sonata.user.mongodb.group_manager # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+  service:
+    user_manager: sonata.user.mongodb.user_manager

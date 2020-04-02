@@ -4,6 +4,8 @@
 namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
  * @MongoDB\Document
@@ -22,16 +24,21 @@ class Order
     protected $user;
 
     /**
+     * @Assert\NotBlank
      * @MongoDB\Field(type="string",nullable="false")
      */
     protected $fio;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Email
      * @MongoDB\Field(type="string", nullable="false")
      */
     protected $email;
 
     /**
+     * @Assert\NotBlank
+     * @AssertPhoneNumber(type="mobile")
      * @MongoDB\Field(type="string", nullable="false")
      */
     protected $phone;
@@ -106,6 +113,38 @@ class Order
     public function setUser($user): void
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFio()
+    {
+        return $this->fio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 }

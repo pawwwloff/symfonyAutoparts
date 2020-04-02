@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <div data-action="{{ admin.generateObjectUrl('change_status', object) }}">
+        <select name="changeStatus">
+            {% for status, status_name in object.getStatuses() %}
+                <option value="{{ status }}" {% if status == object.getStatus() %}selected="selected"{% endif %}>{{ status_name }}</option>
+            {% endfor %}
+        </select>
+        <!--<strong>{{ object.name }}</strong> <br />-->
+    </div>
+{% endblock %}

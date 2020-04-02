@@ -28,18 +28,25 @@ class OrderItemController extends Controller
     }
 
     /**
-     * @Route("/cart", methods={"GET"})
+     * @Route("/cart/add", methods={"POST"})
+     * @param Request $request
      * @return JsonResponse
      */
-    public function list(Request $request) : JsonResponse
+    public function add(Request $request) : JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
+        $data = $request->request->all();
         $user = $this->getUser();
         $orders = null;
-        if($user){
-            $orders = $this->orderItemService->getForUser($user);
+        if($user) {
+            $order = $this->orderItemService->addInCart(
+                $data['product'],
+                $data['quantity'],
+                $user
+            );
+
+            $cart = $this->orderItemService->getCart($user);
         }
 
-        return $this->json($orders);
+        return $this->json($cart);
     }
 }

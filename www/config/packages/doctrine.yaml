@@ -9,22 +9,31 @@ doctrine:
             collate: utf8mb4_unicode_ci
 
         url: '%env(resolve:DATABASE_URL)%'
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
+        entity_managers:
+            default:
+                mappings:
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
         auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
-        mappings:
-            App:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+        #naming_strategy: doctrine.orm.naming_strategy.underscore
+        #auto_mapping: true
+        #mappings:
+        #    App:
+        #        is_bundle: false
+        #        type: annotation
+        #        dir: '%kernel.project_dir%/src/Entity'
+        #        prefix: 'App\Entity'
+        #        alias: App
 doctrine_mongodb:
     connections:
         default:
             server: "%mongodb_server%"
             options: {}
+    #types:
+    #    json: Sonata\Doctrine\Types\JsonType
     default_database: autoparts
     document_managers:
         default:
@@ -36,3 +45,6 @@ doctrine_mongodb:
                     dir: '%kernel.project_dir%/src/Document'
                     prefix: 'App\Document'
                     alias: App
+                SonataUserBundle: ~
+                FOSUserBundle: ~
+                ApplicationSonataUserBundle: ~

@@ -43,7 +43,7 @@ class Supplier
 
     public function getId()
     {
-        return $this->id;
+        return (int)$this->id;
     }
 
     /**
@@ -94,4 +94,10 @@ class Supplier
     {
         $this->status = $status;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

@@ -28,11 +28,16 @@ class FilesService
 
     /**
      * @param $supplier
-     * @return Files|null
+     * @return Files|object|null
      */
-    public function getBySupplier($supplier) : ?Files
+    public function getBySupplier($supplier)
     {
         return $this->repository->findOneBy(['supplier'=>$supplier]);
+    }
+
+    public function getById($id) : ?Files
+    {
+        return $this->repository->one($id);
     }
 
     /**

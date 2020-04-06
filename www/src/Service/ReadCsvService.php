@@ -19,7 +19,6 @@ class ReadCsvService
             if($i<=$skip) continue;
             yield $line;
         }
-
         fclose($handle);
     }
 
@@ -27,13 +26,23 @@ class ReadCsvService
         $iterator = self::readTheFile($file, $count, $skip);
         $lines = [];
         $row = 1;
-        foreach ($iterator as $iteration) {
-            $line = (str_getcsv($iteration, ';'));
-            if($row<count($line)){
-                $row = count($line);
+        if($iterator) {
+            foreach ($iterator as $iteration) {
+                if(!$iteration) continue;
+                $line = (str_getcsv($iteration, ';'));
+                if ($row < count($line)) {
+                    $row = count($line);
+                }
+                $lines[] = $line;
             }
-            $lines[] = $line;
+            $return = ['lines'=>$lines, 'row'=>$row-1];
+            if(count($lines)<$count){
+                $return['end'] = true;
+            }
+            return $return;
+        }else{
+            return ['end'=>true];
         }
-        return ['lines'=>$lines, 'row'=>$row-1];
+
     }
 }

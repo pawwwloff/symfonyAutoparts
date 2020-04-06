@@ -18,4 +18,4 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-/mongo/data/*
+/mongo/data/

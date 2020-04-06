@@ -64,6 +64,9 @@ class User extends BaseUser implements JWTUserInterface
      */
     protected $personalAccount;
 
+    /** TODO добавить личную наценку исходя из которой будет устанавливаться цена покупки*/
+    /** TODO добавить два типа покупателя */
+
     /**
      * @return mixed
      */
@@ -71,6 +74,7 @@ class User extends BaseUser implements JWTUserInterface
     {
         return $this->roles;
     }
+
 
     /**
      * @return mixed

@@ -77,8 +77,12 @@ services:
     ## into:
     image: agaveapi/beanstalkd-console
     ports:
-      - 11380:80
+      - "11380:80"
     environment:
       - BEANSTALKD_HOST=beanstalkd
+      - APACHE_PORT=11380
     links:
       - beanstalkd
+    depends_on:
+      - beanstalkd
+    container_name: 'beanstalkd_console'

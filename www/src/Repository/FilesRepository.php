@@ -46,4 +46,19 @@ class FilesRepository extends DocumentRepository
 
         return $file;
     }
+
+    /**
+     * @param int $id
+     * @return Files|object
+     */
+    public function one(int $id)
+    {
+        $files = parent::findOneBy(['id'=>$id]);
+
+        if($files == null){
+            throw new NotFoundHttpException("Поставщик {$id} не найден");
+        }
+
+        return $files;
+    }
 }

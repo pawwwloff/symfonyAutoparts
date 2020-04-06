@@ -47,6 +47,27 @@ class ProductService
         return $this->productRepository->save($product);
     }
 
+    public function addArray($arFields, $supplierId){
+
+        $supplier = $this->supplierRepository->one($supplierId);
+        $products = [];
+        foreach ($arFields as $arField){
+            $product = new Product();
+            $product->setName($arField['name']);
+            $product->setArticle($arField['article']);
+            $product->setVendor($arField['vendor']);
+            $product->setPrice($arField['price']);
+            $product->setCount($arField['count']);
+            if($supplier) {
+                $product->setSupplier($supplier);
+            }
+            $products[] = $product;
+        }
+        if(count($products)>0) {
+            return $this->productRepository->saveArray($products);
+        }
+    }
+
     public function one(string $id) : Product
     {
         $product = $this->productRepository->one($id);

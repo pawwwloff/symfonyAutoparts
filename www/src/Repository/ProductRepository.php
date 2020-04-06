@@ -38,6 +38,7 @@ class ProductRepository extends DocumentRepository
     public function saveArray(array $products) : array
     {
         foreach ($products as $product){
+            $product->setId();
             $this->dm->persist($product);
         }
         $this->dm->flush();

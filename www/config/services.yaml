@@ -46,6 +46,7 @@ services:
         arguments: [~, App\Document\PersonalAccount, ~]
         tags:
             - { name: sonata.admin, manager_type: doctrine_mongodb, group: sonata_user, label: PersonalAccount }
-    mailer:
-      alias: fos_user.mailer.noop
-      public: true
+    #mailer:
+    #  alias: fos_user.mailer.noop
+    #  public: true
+

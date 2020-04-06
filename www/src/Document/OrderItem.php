@@ -128,6 +128,7 @@ class OrderItem
      * @MongoDB\Field(type="float")
      */
     protected $overdraft;
+    /** TODO добавить поле комментаия для клиента (вполне вероятно что еще нужно поле для комментария менеджера) */
 
     protected $paidText;
 

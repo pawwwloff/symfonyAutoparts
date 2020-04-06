@@ -62,6 +62,7 @@ class OrderService
                 foreach($basket as $number => $item){
                     if($item->getProduct()->getCount()>0){
                         $item->setOrder($order);
+                        /** TODO если средств на счете достаточно, заказ создается со статусом «Получено в заказ»*/
                         $item->setStatus(OrderItem::WAITING_FOR_PAYMENT);
                         $item->setNumber($number+1);
                         $this->orderItemRepository->save($item);

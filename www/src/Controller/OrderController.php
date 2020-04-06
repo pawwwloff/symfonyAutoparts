@@ -42,6 +42,7 @@ class OrderController extends Controller
      * @return Response
      */
     public function order(Request $request){
+        /** TODO добавить способы доставки */
         $user = $this->getUser();
         $order = new Order();
         $orders = [];

@@ -11,6 +11,7 @@ use App\Repository\ProductRepository;
 use App\Repository\SupplierRepository;
 use App\Service\FilesService;
 use App\Service\ProductService;
+use App\Service\QueueService;
 use App\Service\ReadCsvService;
 use Mnvx\Lowrapper\Converter;
 use Mnvx\Lowrapper\Format;
@@ -51,6 +52,10 @@ class SupplierAdminController extends CRUDController
      * @var FilesService
      */
     private $filesService;
+    /**
+     * @var QueueService
+     */
+    private $queueService;
 
     /**
      * SearchController constructor.
@@ -58,16 +63,19 @@ class SupplierAdminController extends CRUDController
      * @param ProductService $productService
      * @param ProductRepository $productRepository
      * @param FilesService $filesService
+     * @param QueueService $queueService
      */
     public function __construct(SupplierRepository $supplierRepository,
                                 ProductService $productService,
                                 ProductRepository $productRepository,
-                                FilesService $filesService)
+                                FilesService $filesService,
+                                QueueService $queueService)
     {
         $this->supplierRepository = $supplierRepository;
         $this->productService = $productService;
         $this->productRepository = $productRepository;
         $this->filesService = $filesService;
+        $this->queueService = $queueService;
     }
 
     /**
@@ -139,7 +147,8 @@ class SupplierAdminController extends CRUDController
 
         $converter->convert($parameters);
 
-        $lines = ReadCsvService::getLines($parameters->getOutputFile(), 5, 5);
+        $lines = ReadCsvService::getLines($parameters->getOutputFile(), 5, 0);
+
         $return['filepath'] = $parameters->getOutputFile();
         $return['lines'] = json_encode($lines);
         $return['html'] = $this->render('CRUD/supplier/download_file_html_block.html.twig', [
@@ -158,8 +167,9 @@ class SupplierAdminController extends CRUDController
          *  ГОТОВО - Ajax загрузка файла с автоматическим переводом в csv
          *  ГОТОВО - создал - SupplierFiles в нем все что связанно с файлами
          *  ГОТОВО - Добавить кнопку сохранить, и сохранение элемента (видимо на этом же роуте)
+         *  ГОТОВО - Создать воркер для разбора файла (пока что будем руками, в дальнейшем все на менеджера очередей переводим)
          *
-         *  Создать воркер для разбора файла (пока что будем руками, в дальнейшем все на менеджера очередей переводим)
+         * Сделать выполнение воркера на supervisor (php bin/console app:download-csv)
          */
         $object = $this->admin->getSubject();
         if(!$object){
@@ -181,9 +191,13 @@ class SupplierAdminController extends CRUDController
                 if(!$data->getId()) {
                     $file = $this->filesService->add($data, $object, $jsonSettings);
                 }else{
-                    $file = $this->filesService->update($file, $object, $jsonSettings);
+                    $file = $this->filesService->update($data, $object, $jsonSettings);
                 }
                 if($file) {
+                    $this->queueService->send([
+                        'file_id'=>$file->getId(),
+                        'skip'=>0
+                    ]);
                     if($request->get('btn_update_and_list')!==NULL){
                         return $this->redirectTo($object);
                     }

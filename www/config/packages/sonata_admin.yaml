@@ -7,6 +7,8 @@ sonata_admin:
         # javascript paths to add to the page in addition to the list above
         extra_javascripts:
             - assets/js/script.admin.js
+    security:
+        handler: sonata.admin.security.handler.role
 
 
 sonata_block:

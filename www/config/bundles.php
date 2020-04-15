@@ -28,4 +28,5 @@ return [
     Sonata\UserBundle\SonataUserBundle::class => ['all' => true],
     App\Application\Sonata\UserBundle\ApplicationSonataUserBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    App\Autoparts\StoreBundle\AutopartsStoreBundle::class => ['all' => true],
 ];

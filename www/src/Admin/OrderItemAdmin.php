@@ -54,7 +54,7 @@ final class OrderItemAdmin extends AbstractAdmin
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
-        $queryBuilder = $queryz
+        $queryBuilder = $query
             ->field('order.$id')->notEqual(null);
         $query = new ProxyQuery($queryBuilder);
 

@@ -7,11 +7,20 @@ security:
     #    connection: default
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        #ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
-        ROLE_API:         ROLE_USER
-        SONATA:
-            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT
+        ROLE_ADMIN:       ~
+        ROLE_SONATA_USER_ADMIN_USER_ALL:       ROLE_SEE_ADMIN_PAGE
+        #ROLE_EDIT_ROLES:       ROLE_SONATA_USER_ADMIN_USER_ALL
+        ROLE_ADMIN_ORDER_ALL:       ROLE_SEE_ADMIN_PAGE
+        ROLE_ADMIN_SUPPLIER_ALL:       ROLE_SEE_ADMIN_PAGE
+        ROLE_ADMIN_SUPPLIER_LIST:       ROLE_SEE_ADMIN_PAGE
+        ROLE_CREATE_RECEIPT:       ROLE_SEE_ADMIN_PAGE
+        ROLE_CREATE_SHIPMENT:       ROLE_SEE_ADMIN_PAGE
+        ROLE_SONATA_USER_ADMIN_USER_LIST:       ROLE_SEE_ADMIN_PAGE
+        ROLE_ADMIN_ACCOUNT_ALL:       ROLE_SEE_ADMIN_PAGE
+        ROLE_STOCK:       ROLE_SEE_ADMIN_PAGE
+
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -20,7 +29,8 @@ security:
             chain:
                 providers: [fos_userbundle, jwt]
         fos_userbundle:
-            id: fos_user.user_provider.username_email
+            id: App\Service\PhoneUserProvider
+            #id: fos_user.user_provider.username_email
         jwt:
             mongodb: { class: App\Document\User, property: username }
     firewalls:
@@ -97,12 +107,13 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/admin, roles: [ROLE_ADMIN,ROLE_SEE_ADMIN_PAGE] }
+
         #- { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/api/cart, roles: ROLE_USER }
         - { path: ^/cart, roles: ROLE_USER }
         - { path: ^/order, roles: ROLE_USER }
         - { path: ^/search, roles: ROLE_USER }
-        - { path: ^/api,       roles: [ROLE_API,ROLE_USER]}
+        #- { path: ^/api,       roles: [ROLE_API,ROLE_USER]}
         #- { path: ^/api/, role: IS_AUTHENTICATED_FULLY}

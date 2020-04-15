@@ -2,46 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dc63314-e14e-4e4a-8354-42e6b9dcf56f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/autoparts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/autoparts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fpm/.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/fpm/.Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/WiredTiger.turtle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/WiredTiger.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/WiredTiger.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/_mdb_catalog.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/_mdb_catalog.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/collection-0--1915426275294040435.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-0--1915426275294040435.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/collection-0--6762726705332580893.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-0--6762726705332580893.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/collection-0--7292443160694824275.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-0--7292443160694824275.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/collection-1-6563863411177840224.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-1-6563863411177840224.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/collection-2--601384312791986765.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-2--601384312791986765.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/collection-2-3846463019443480128.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-2-3846463019443480128.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/collection-4--601384312791986765.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-4--601384312791986765.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/collection-4--6762726705332580893.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-4--6762726705332580893.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/diagnostic.data/metrics.2020-03-31T09-08-00Z-00000" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/diagnostic.data/metrics.2020-03-31T09-08-00Z-00000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/collection-6--1915426275294040435.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-6--1915426275294040435.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/collection-8--1915426275294040435.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/collection-8--1915426275294040435.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/diagnostic.data/metrics.interim" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/diagnostic.data/metrics.interim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/index-2-6563863411177840224.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-2-6563863411177840224.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/index-1--6762726705332580893.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-1--6762726705332580893.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/index-3--601384312791986765.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-3--601384312791986765.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/index-3-3846463019443480128.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-3-3846463019443480128.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/index-5--601384312791986765.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-5--601384312791986765.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/index-5--6762726705332580893.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-5--6762726705332580893.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/index-6--601384312791986765.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-6--601384312791986765.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mongo/data/journal/WiredTigerLog.0000000021" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/index-7--1915426275294040435.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-7--1915426275294040435.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mongo/data/index-9--1915426275294040435.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/index-9--1915426275294040435.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mongo/data/sizeStorer.wt" beforeDir="false" afterPath="$PROJECT_DIR$/mongo/data/sizeStorer.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nginx/log/project_access.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/log/project_access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/www/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/log/project_error.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/log/project_error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/www/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/fos_user_bundle.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/fos_user_bundle.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/sonata_admin.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/sonata_admin.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/www/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/public/assets/js/script.admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/assets/js/script.admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/src/Admin/OrderItemAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Admin/OrderItemAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Admin/ProductAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Admin/ProductAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Controller/Admin/SupplierAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Controller/Admin/SupplierAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Admin/UserAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Admin/UserAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/src/Document/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Document/OrderItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Document/Supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Document/Supplier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/src/Document/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Document/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Repository/FilesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Repository/FilesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Repository/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Repository/ProductRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Service/FilesService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/FilesService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Service/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/OrderService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Service/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/ProductService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Service/QueueService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/QueueService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/Service/ReadCsvService.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Service/ReadCsvService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/src/Form/RegistrationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Form/RegistrationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/www/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/www/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/templates/bundles/SonataAdminBundle/Menu/sonata_menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/www/templates/bundles/SonataAdminBundle/Menu/sonata_menu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/translations/bundles/SonataAdminBundle/SonataAdminBundle.ru.xlf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +64,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -205,6 +211,8 @@
       <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/www/vendor/pda/pheanstalk" />
       <path value="$PROJECT_DIR$/www/vendor/mnvx/lowrapper" />
+      <path value="$PROJECT_DIR$/www/vendor/tecnickcom/tc-lib-barcode" />
+      <path value="$PROJECT_DIR$/www/vendor/tecnickcom/tc-lib-color" />
     </include_path>
   </component>
   <component name="ProjectId" id="1PS832BhP8Vtk1vZcyFiAWNAPjK" />
@@ -217,25 +225,25 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mongo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/www/templates/form" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mongo" />
-      <recent name="$PROJECT_DIR$/www/src/Repository" />
-      <recent name="$PROJECT_DIR$/www/src/Service" />
-      <recent name="$PROJECT_DIR$/www/templates/CRUD/supplier" />
-      <recent name="$PROJECT_DIR$/www/src/Form" />
+      <recent name="$PROJECT_DIR$/www/templates/form" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Form/Type" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Service" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Repository" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/www" />
-      <recent name="$PROJECT_DIR$/www/templates/CRUD/orders" />
-      <recent name="$PROJECT_DIR$/www/src/Controller/Admin" />
-      <recent name="$PROJECT_DIR$/www/src/Controller" />
-      <recent name="$PROJECT_DIR$/www/public/assets/js" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Form/Type" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Admin" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Service" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Repository" />
+      <recent name="$PROJECT_DIR$/www/src/Autoparts/StoreBundle/Controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -298,7 +306,7 @@
       <workItem from="1582258488902" duration="37000" />
       <workItem from="1583386943791" duration="69720000" />
       <workItem from="1584874588980" duration="17303000" />
-      <workItem from="1585544726232" duration="69771000" />
+      <workItem from="1585544726232" duration="183383000" />
     </task>
     <servers />
   </component>

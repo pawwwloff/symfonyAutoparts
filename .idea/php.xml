@@ -140,6 +140,8 @@
       <path value="$PROJECT_DIR$/www/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/www/vendor/pda/pheanstalk" />
       <path value="$PROJECT_DIR$/www/vendor/mnvx/lowrapper" />
+      <path value="$PROJECT_DIR$/www/vendor/tecnickcom/tc-lib-barcode" />
+      <path value="$PROJECT_DIR$/www/vendor/tecnickcom/tc-lib-color" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

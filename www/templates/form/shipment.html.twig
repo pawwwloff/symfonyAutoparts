@@ -1,0 +1,100 @@
+<div class="form-group row shipment_table_block">
+    <div class="col-sm-12 col-form-label shipment_table">
+        {{ dump(data) }}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Заказ</th>
+                <th scope="col">Пользователь</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Артикул</th>
+                <th scope="col">Производитель</th>
+                <th scope="col">Количество в заказе</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Принять</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for storeItem in data.storeItems %}
+                <tr>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.order.id }}-{{ storeItem.receiptOrderItem.orderItem.number }}</td>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.user.username }}</td>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.name }}</td>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.article }}</td>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.vendor }}</td>
+                    <td class="quantity">{{ storeItem.receiptOrderItem.quantity }}</td>
+                    <td>{{ storeItem.receiptOrderItem.orderItem.price }}</td>
+                    <td>
+                        <div>
+                            <input type="number" data-id="{{ storeItem.receiptOrderItem.orderItem.id }}" data-quantity="{{ storeItem.receiptOrderItem.quantity }}" name="order[{{ storeItem.receiptOrderItem.orderItem.id }}]" value="{{ storeItem.receiptOrderItem.quantity }}">
+                            <button type="button" name="shipment" value="yes">Принять</button>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+            <tbody class="receipted_order">
+                {% if data.shipmentItems is defined %}
+                    {% for shipmentItem in data.shipmentItems %}
+                        <tr>
+                            <td>{{ receipt.orderItem.order.id }}-{{ receipt.orderItem.number }}</td>
+                            <td>{{ receipt.orderItem.user.username }}</td>
+                            <td>{{ receipt.orderItem.name }}</td>
+                            <td>{{ receipt.orderItem.article }}</td>
+                            <td>{{ receipt.orderItem.vendor }}</td>
+                            <td class="quantity">{{ receipt.quantity }}</td>
+                            <td>{{ receipt.orderItem.price }}</td>
+                            <td>
+                                <div>
+                                    <input type="number" data-id="{{ receipt.orderItem.id }}" data-quantity="{{ receipt.quantity }}" value="{{ receipt.quantity }}">
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).on('change', '.shipment_select_user', function () {
+        var user = $(this).val();
+        var data = {user:user};
+        $.ajax({
+            type: 'POST',
+            url: '{{ path('sonata_admin_receipt_store_items') }}',
+            data: data
+        }).done(function (data) {
+            $('.shipment_table_block').html($(data.html).find('.shipment_table'));
+        });
+    })
+    $(document).on('click', 'button[name="shipment"]', function () {
+        /*var tr = $(this).closest('tr');
+        var clonetr = tr.clone();
+        var parrent = $(this).closest('div');
+        var input = parrent.find('input');
+        var id = input.data('id');
+        var allquantity = input.data('quantity');
+        var quantity = input.val();
+        var receiptInput = $('.receipted_order').find('[name="receipt['+id+']"]');
+        if(allquantity<=quantity){
+            tr.remove();
+        }else{
+            input.data('quantity', allquantity-quantity);
+            input.val(allquantity-quantity);
+            tr.find('td.quantity').html(allquantity-quantity)
+        }
+        console.log(receiptInput.length>0);
+        if(receiptInput.length>0){
+            var q = parseInt(receiptInput.val());
+            receiptInput.val(q+parseInt(quantity))
+            receiptInput.closest('tr').find('td.quantity').html(q+parseInt(quantity))
+        }else{
+            clonetr.find('input').attr('name', 'receipt['+id+']');
+            clonetr.find('td.quantity').html(quantity)
+            $('.receipted_order').prepend(clonetr);
+        }*/
+
+    })
+</script>

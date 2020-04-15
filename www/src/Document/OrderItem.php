@@ -31,6 +31,13 @@ class OrderItem
     const SHIPPED = 'SHIPPED';
     const IN_PROCESSING = 'IN_PROCESSING';
 
+    /** TODO статусы в которых показываются заказы в поступлении
+     * сделать массивом
+     */
+    const STATUSES_AT_RECEIPT = ['RECEIVED_IN_ORDER'];
+
+    const STATUS_TO_RECEIPT = 'STORE';
+
     protected $statuses = [
         'WAITING_FOR_PAYMENT'=>'Ждет оплаты',
         'RECEIVED_IN_ORDER'=>'Получено в заказ',

@@ -137,6 +137,8 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/web-server-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/tecnickcom/tc-lib-barcode" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/tecnickcom/tc-lib-color" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/twig/extensions" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/webmozart/assert" />

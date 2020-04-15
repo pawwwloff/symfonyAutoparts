@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="sonata_user">
+        <source>ROLE_USER</source>
+        <target>Покупатель</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_admin">
+        <source>ROLE_ADMIN</source>
+        <target>Администратор</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_superadmin">
+        <source>ROLE_SUPER_ADMIN</source>
+        <target>Суперадминистратор</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_see_admin_page">
+        <source>ROLE_SEE_ADMIN_PAGE</source>
+        <target>Доступ в админ панель</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_edit_users">
+        <source>ROLE_SONATA_USER_ADMIN_USER_ALL</source>
+        <target>Редактирование пользователей</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_edit_roles">
+        <source>ROLE_EDIT_ROLES</source>
+        <target>Возможность давать права</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_edit_orders">
+        <source>ROLE_ADMIN_ORDER_ALL</source>
+        <target>Редактирование заказов</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_edit_supplier">
+        <source>ROLE_ADMIN_SUPPLIER_ALL</source>
+        <target>Редактирование поставщиков</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_load_pricelist">
+        <source>ROLE_ADMIN_SUPPLIER_LIST</source>
+        <target>Загрузка прайслистов</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_create_receipt">
+        <source>ROLE_CREATE_RECEIPT</source>
+        <target>Создание поступлений</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_create_shipment">
+        <source>ROLE_CREATE_SHIPMENT</source>
+        <target>Создание отгрузок</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_use_other_user">
+        <source>ROLE_SONATA_USER_ADMIN_USER_LIST</source>
+        <target>Создание заказа под другим пользователем</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_edit_personal_account">
+        <source>ROLE_ADMIN_ACCOUNT_ALL</source>
+        <target>Пополнение счета</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_stock">
+        <source>ROLE_STOCK</source>
+        <target>Отгрузка (склад)</target>
+      </trans-unit>
+      <trans-unit id="sonata_role_admin_supplier_list">
+        <source>ROLE_ADMIN_SUPPLIER_LIST</source>
+        <target>Просмотр списка</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

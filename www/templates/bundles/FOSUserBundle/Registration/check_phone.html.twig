@@ -1,0 +1,14 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+    {{ form_row(form.field) }}
+    {{ form_row(form.code) }}
+    <input type = "submit" name = "submit" value = "Отправить">
+    {{ form_end(form) }}
+{% endblock fos_user_content %}

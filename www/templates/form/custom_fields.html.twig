@@ -1,0 +1,16 @@
+{% block span_row %}
+     <div class="form-group row">
+          <label class="col-form-label col-sm-2 required" for="fos_user_profile_company">{{ label }}</label>
+          <div class="col-sm-10 col-form-label">
+               <span>{{ data.value }}</span>
+          </div>
+     </div>
+{% endblock %}
+
+{% block receipt_row %}
+     {% include 'form/receipt.html.twig' %}
+{% endblock %}
+
+{% block shipment_row %}
+     {% include 'form/shipment.html.twig' %}
+{% endblock %}

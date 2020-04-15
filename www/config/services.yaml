@@ -30,22 +30,73 @@ services:
         class: App\Admin\SupplierAdmin
         arguments: [~, App\Document\Supplier, App\Controller\Admin\SupplierAdminController]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Supplier }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Поставщики }
     admin.product:
         class: App\Admin\ProductAdmin
         arguments: [~, App\Document\Product, ~]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Product }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Товары }
     admin.order:
         class: App\Admin\OrderItemAdmin
         arguments: [~, App\Document\OrderItem, App\Controller\Admin\OrderItemAdminController]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Order }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Заказы }
+    admin.receipt:
+        class: App\Autoparts\StoreBundle\Admin\ReceiptAdmin
+        arguments: [~, App\Autoparts\StoreBundle\Document\Receipt, ~]
+        calls:
+            - [setOrderItem, ['@App\Service\OrderItemService', '@App\Repository\OrderItemRepository']]
+            - [setReceiptOrderItem, ['@App\Autoparts\StoreBundle\Service\ReceiptOrderItemService', '@App\Autoparts\StoreBundle\Repository\ReceiptOrderItemRepository']]
+            - [setStoreItem, ['@App\Autoparts\StoreBundle\Service\StoreItemService']]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Поступления }
+    admin.shipment:
+        class: App\Autoparts\StoreBundle\Admin\ShipmentAdmin
+        arguments: [~, App\Autoparts\StoreBundle\Document\Shipment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: Магазин, label: Отгрузки }
     admin.account:
         class: App\Admin\PersonalAccountAdmin
         arguments: [~, App\Document\PersonalAccount, ~]
         tags:
-            - { name: sonata.admin, manager_type: doctrine_mongodb, group: sonata_user, label: PersonalAccount }
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: sonata_user, label: Личные счета }
+
+    App\Controller\RegistrationController:
+        arguments:
+            $eventDispatcher: '@event_dispatcher'
+            $formFactory: '@fos_user.registration.form.factory'
+            $userManager: '@fos_user.user_manager'
+            $tokenStorage: '@security.token_storage'
+
+    App\Controller\ResettingController:
+        arguments:
+            $eventDispatcher: '@event_dispatcher'
+            $formFactory: '@fos_user.registration.form.factory'
+            $userManager: '@fos_user.user_manager'
+            $tokenGenerator: '@fos_user.util.token_generator.default'
+            $mailer: '@fos_user.mailer.default'
+            $retryTtl: 7200
+
+    App\Controller\ProfileController:
+        arguments:
+            $eventDispatcher: '@event_dispatcher'
+            $userManager: '@fos_user.user_manager'
+
+
+    sonata.user.editable_role_builder:
+        class: App\Service\CustomRolesBuilder
+        arguments:
+            $tokenStorage: '@security.token_storage'
+            $authorizationChecker: '@security.authorization_checker'
+            $pool: '@sonata.admin.pool'
+            $rolesHierarchy: '%security.role_hierarchy.roles%'
+
+    sonata.user.form.type.security_roles:
+        class: App\Form\CustomRolesType
+        #alias: '@sonata_security_roles'
+        arguments:
+            $rolesBuilder: '@sonata.user.editable_role_builder'
+
     #mailer:
     #  alias: fos_user.mailer.noop
     #  public: true

@@ -5,7 +5,10 @@ namespace App\Admin;
 
 use App\Document\PersonalAccount;
 use App\Document\Supplier;
+use App\Document\User;
+use App\Form\CustomRolesType;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -84,7 +87,7 @@ class UserAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->addIdentifier('username', null, array('label' => 'Логин'))
+            ->addIdentifier('phone', null, array('label' => 'Логин'))
             ->add('email', null, array('label' => 'Email'))
             //->add('groups', null, array('label' => 'Email'))
             ->add('enabled', null, ['editable' => true,'label' => 'Активность'])
@@ -159,21 +162,23 @@ class UserAdmin extends AbstractAdmin
         $formMapper
             ->tab('User', ['label' => 'Пользователь'])
                 ->with('General', ['class' => 'col-md-6', 'label' => 'Основные'])->end()
-                ->with('Roles', ['class' => 'col-md-6','label' => 'Роли'])->end()
+                ->with('Fields', ['class' => 'col-md-6','label' => 'Тип пользователя'])->end()
+            ->end()
+            ->tab('Security', ['label' => 'Безопасность'])
+                ->with('Roles', ['class' => 'col-md-12','label' => 'Роли'])->end()
             ->end()
         ;
         $formMapper
             ->tab('User')
                 ->with('General')
-                    ->add('username', null, ['label' => 'Логин (тел.)'])
+                    //->add('username', null, ['label' => 'Логин (тел.)'])
+                    ->add('phone', null, ['required' => true,'label' => 'Номер телефона'])
                     ->add('email', null, ['label' => 'Email'])
                     ->add('plainPassword', TextType::class, [
                         'label' => 'Пароль',
                         'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
                     ])
-                    ->add('firstname', null, ['required' => false,'label' => 'Имя'])
-                    ->add('lastname', null, ['required' => false,'label' => 'Фамилия'])
-                    ->add('phone', null, ['required' => false,'label' => 'Номер телефона'])
+            //->add('phone', null, ['required' => false,'label' => 'Номер телефона'])
                     ->add('personalAccount', ModelType::class, [
                         'class'   => PersonalAccount::class,
                         'label' => 'Персональный счет',
@@ -182,9 +187,55 @@ class UserAdmin extends AbstractAdmin
                         //'choice_label' => 'name',
                     ])
                     ->add('enabled', null, ['required' => false,'label' => 'Активность'])
+
                 ->end()
+                ->with('Fields')
+                    ->add('type', ChoiceType::class, [
+                        'choices'=>User::$userTypes,
+                        'attr' => ['class' => 'choice-type'],
+                        'label' => 'Тип'
+                    ])
+                    ->add('company', TextType::class, [
+                        'required' => false,
+                        'attr' => ['data-type' => User::USER_TYPE_ENTITY],
+                        'label' => 'Наименование компание'
+                    ])
+                    ->add('inn', TextType::class, [
+                        'required' => false,
+                        'attr' => ['data-type' => User::USER_TYPE_ENTITY],
+                        'label' => 'ИНН'
+                    ])
+                    ->add('kpp', TextType::class, [
+                        'required' => false,
+                        'attr' => ['data-type' => User::USER_TYPE_ENTITY],
+                        'label' => 'КПП'
+                    ])
+                    ->add('city', TextType::class, [
+                        'required' => false,
+                        'attr' => ['data-type' => User::USER_TYPE_ENTITY],
+                        'label' => 'Город'
+                    ])
+                    ->add('first_name', TextType::class, [
+                        'attr' => ['data-type' => User::USER_TYPE_INDIVIDUAL],
+                        'required'=>false,
+                        'label' => 'Имя'
+                    ])
+                    ->add('second_name', TextType::class, [
+                        'attr' => ['data-type' => User::USER_TYPE_INDIVIDUAL],
+                        'required'=>false,
+                        'label' => 'Отчество'
+                    ])
+                    ->add('last_name', TextType::class, [
+                        'attr' => ['data-type' => User::USER_TYPE_INDIVIDUAL],
+                        'required'=>false,
+                        'label' => 'Фамилия'
+                    ])
+                ->end()
+            ->end()
+            ->tab('Security')
                 ->with('Roles')
-                    ->add('realRoles', SecurityRolesType::class, [
+                    ->add('realRoles', CustomRolesType::class, [
+                        'translation_domain' => 'roles',
                         'label' => 'Роли',
                         'expanded' => true,
                         'multiple' => true,

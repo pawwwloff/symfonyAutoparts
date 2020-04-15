@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.phone) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.plainPassword.first) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.plainPassword.second) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_row(form.type) }}
+        </div>
+        <div class='change-type col-md-6'>
+            {{ form_row(form.company) }}
+        </div>
+        <div class='change-type col-md-6'>
+            {{ form_row(form.inn) }}
+        </div>
+        <div class='change-type col-md-6'>
+            {{ form_row(form.kpp) }}
+        </div>
+        <div class='change-type col-md-6'>
+            {{ form_row(form.city) }}
+        </div>
+        <div class='change-type col-md-6' style="display: none">
+            {{ form_row(form.first_name) }}
+        </div>
+        <div class='change-type col-md-6' style="display: none">
+            {{ form_row(form.second_name) }}
+        </div>
+        <div class='change-type col-md-6' style="display: none">
+            {{ form_row(form.last_name) }}
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}

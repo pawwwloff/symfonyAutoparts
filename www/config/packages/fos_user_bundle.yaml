@@ -9,6 +9,14 @@ fos_user:
   registration:
     form:
       type: App\Form\RegistrationType
+    confirmation:
+      enabled: true
+      from_email:
+        address: my_username@gmail.com
+        sender_name: Demo registration
+  profile:
+    form:
+      type: App\Form\ProfileType
   group:
     group_class:   App\Application\Sonata\UserBundle\Document\Group
     group_manager: sonata.user.mongodb.group_manager # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)

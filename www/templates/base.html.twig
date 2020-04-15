@@ -137,7 +137,7 @@
                                     <path d="M0 0h24v24H0z" fill="none"/>
                                 </svg>
                                 <span>
-                                    Баланс <span id='curBudgetAsside' class='black'><span>{{app.user.personalAccount.finance}}</span> руб.</span>
+                                    Баланс <span id='curBudgetAsside' class='black'><span>{% if(app.user.personalAccount) %}{{app.user.personalAccount.finance}}{% else %}0{% endif %}</span> руб.</span>
                                 </span>
                             </a>
                         </li>
@@ -149,7 +149,7 @@
                                     <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                                 </svg>
                                 <span>
-                                    Овердрафт <span id='curOverdraft' class="black"><span>{{app.user.personalAccount.overdraft}}</span> руб.</span>
+                                    Овердрафт <span id='curOverdraft' class="black"><span>{% if(app.user.personalAccount) %}{{app.user.personalAccount.overdraft}}{% else %}0{% endif %}</span> руб.</span>
                                 </span>
                             </span>
                         </li>
@@ -277,69 +277,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% block javascripts %}
-            <script>
-                /*$(document).ready(function() {
-                    // bind 'myForm' and provide a simple callback function
-                    $('#order_content form').ajaxForm(function() {
-                        alert("Thank you for your comment!");
-                    });
-                });*/
-                $(document).on('submit', '#order_content form',function (e) {
-                    e.preventDefault();
-                    var form = $(this);
-                    var data = form.serializeArray();
-                    $.ajax({
-                        type: form.attr('method'),
-                        url: form.attr('action'),
-                        data: data
-                    }).done(function (data) {
-                        $('#order_content').html(data.content);
-                    });
-                });
-                $(document).on('submit', '[action="/cart/add"]',function (e) {
-                    e.preventDefault();
-                    var form = $(this);
-                    var data = form.serializeArray();
-                    $.ajax({
-                        type: form.attr('method'),
-                        url: form.attr('action'),
-                        data: data
-                    }).done(function (data) {
-                        $('.side-nav__summ span').html(data.summ);
-                    });
-                });
-                $(document).on('change', '[name="quantity"]',function (e) {
-                    e.preventDefault();
-                    var product = $(this).parent().find('[name="product"]').val();
-                    var quantity = $(this).val();
-                    var data = {product:product, quantity:quantity};
-                    $.ajax({
-                        type: 'POST',
-                        url: '/cart/add',
-                        data: data
-                    }).done(function (data) {
-                        $('.side-nav__summ span').html(data.summ);
-                    });
-                });
-                $(document).on('click', '[name="pay"]',function (e) {
-                    e.preventDefault();
-                    var $this = $(this);
-                    var parent = $this.closest('tr');
-                    var id = $this.data('id');
-                    var data = {id:id};
-                    $.ajax({
-                        type: 'POST',
-                        url: '/personal/pay',
-                        data: data
-                    }).done(function (data) {
-                        parent.find('.paidText').html(data.order.paidText);
-                        $this.remove();
-                        $('#curBudgetAsside span').html(data.account.finance);
-                        $('#curOverdraft span').html(data.account.overdraft);
-                        console.log(data);
-                    });
-                });
-            </script>
+            <script src="/assets/js/script.js"></script>
         {% endblock %}
     </body>
 </html>
